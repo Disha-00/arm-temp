@@ -1,0 +1,64 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Microsoft Fabric API",
+    "description": "API for managing Microsoft Fabric resources",
+    "version": "1.0.0"
+  },
+  "host": "api.fabric.microsoft.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/workspaces": {
+      "post": {
+        "summary": "Create Workspace",
+        "description": "Creates a new Microsoft Fabric workspace.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Workspace creation parameters",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Workspace"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace created successfully"
+          }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/kqlDatabases": {
+      "post": {
+        "summary": "Create KQL Database",
+        "description": "Creates a new KQL database in the specified workspace.",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "KQL database creation parameters",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/KQLDatabase"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "KQL Database created successfully"
+          }
+        }
+      }
+    }
+  }
+}
